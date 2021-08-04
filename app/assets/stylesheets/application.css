@@ -11,5 +11,17 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= stub "active_admin"
  *= require_self
  */
+
+ .navbar-brand{
+  font-family: 'Heebo', sans-serif;
+  font-size: xx-large;
+ }
+ body{
+   margin-top: 0;
+   margin-left: 0;
+   margin-right: 0;
+ }
+

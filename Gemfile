@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Include Devise for User Management
 gem 'devise'
+# Include Faker for test fake data
+gem 'faker'
+#Include ActiveAdmin to generate admin roles
+gem 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

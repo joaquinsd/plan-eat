@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+    <div class="col">
+      <div class="card text-end" style="width: 18rem;">
+        <img src= <%= recipe.picture%> class="card-img-top" alt="<%= recipe.name%>">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.name %></h5>
+          <p class="card-text text"><%= recipe.description %></p>
+          <%= link_to 'See More', recipe, class: "btn btn-sm btn-primary", id: 'recipe-info' %>
+          <%= link_to 'Add to your Menu', recipe, class: "btn btn-sm btn-info" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<!-- Recipe Details Modal -->
+<div class="modal fade" id="recipe-data" tabindex="-1" aria-labelledby="recipeDataModal">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="recipeModal"></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="recipeDescription"><strong>Description:</strong></p>
+        <h6>Ingredients</h6>
+        <ul id='ingredientList'></ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
