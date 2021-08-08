@@ -1,4 +1,6 @@
-# README
+# PlanEat
+## Hito 1 (Diseño)
+El Kanban Board con las historias de usuario se puede encontrar en https://bit.ly/3fA4nQ1
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

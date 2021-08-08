@@ -1,1 +1,1 @@
-json.partial! "recipes/recipe", recipe: @recipe
+json.extract! @response, :id, :name, :description, :ingredients, :steps

@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe, only: %i[ show edit update destroy]
 
   # GET /recipes or /recipes.json
   def index
@@ -8,7 +8,15 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    @response = @recipe.recipe_data
+    respond_to do |format|
+      format.html {}
+      format.js {}
+      format.json {}
+    end
+    # render json: JSON.generate(response)
   end
+
 
   # GET /recipes/new
   def new

@@ -1,0 +1,43 @@
+var moreInfoBtn = document.querySelector('#more-recipe-info-<%=@recipe.id%>')
+link = moreInfoBtn.dataset.url
+fetch(link).then(function(response){
+    return response.json();
+}).then(function(response){
+    fillRecipeModal(response)
+})
+
+function fillRecipeModal(recipe_data) {
+  var modal = document.querySelector('#recipe-data')
+  var modalCloseButton = document.querySelector('#close-modal')
+  var modalTitle = document.querySelector('#recipe-modal-title')
+  var recipeDescription = document.querySelector('#recipeDescription')
+  var ingredientList = document.querySelector('#ingredientList')
+  var preparationSteps = document.querySelector('#preparationSteps')
+
+  modalTitle.innerHTML = ''
+  recipeDescription.innerHTML = ''
+  ingredientList.innerHTML = ''
+  preparationSteps.innerHTML = ''
+
+  modalTitle.appendChild(document.createTextNode(recipe_data.name))
+  recipeDescription.appendChild(document.createTextNode(recipe_data.description))
+  preparationSteps.appendChild(document.createTextNode(recipe_data.steps))
+
+  recipe_data.ingredients.forEach(function(iterable){
+    var li = document.createElement('li')
+    amount = document.createTextNode(iterable.amount)
+    measure = document.createTextNode(iterable.measure)
+    ingredient = document.createTextNode(iterable.name)
+    li.appendChild(amount)
+    li.appendChild(document.createTextNode(' '))
+    li.appendChild(measure)
+    li.appendChild(document.createTextNode(' of '))
+    li.appendChild(ingredient)
+    ingredientList.appendChild(li)
+  })
+
+  modalCloseButton.addEventListener('click', function(event){
+    modal.style.display = 'none'
+  })
+}
+

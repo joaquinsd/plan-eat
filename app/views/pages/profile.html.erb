@@ -1,0 +1,7 @@
+<h4><%= current_user.name %>'s Profile</h4>
+
+<h5>Personal Info</h5>
+<p><strong>Email:</strong> <%= current_user.email %></p>
+<p><strong>Name:</strong> <%= current_user.name %> <%= current_user.lastname %> </p>
+<%= link_to 'Edit Your Profile', edit_user_registration_path, class: "btn btn-sm btn-secondary", id: "profile-edit" %> <!-- Implementar con AJAX sin UJS (Modal) -->
+

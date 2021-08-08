@@ -9,7 +9,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= recipe.name %></h5>
           <p class="card-text text"><%= recipe.description %></p>
-          <%= link_to 'See More', recipe, class: "btn btn-sm btn-primary", id: 'recipe-info' %>
+          <%= link_to 'See More', recipe , class: "btn btn-sm btn-primary", id:"more-recipe-info-#{recipe.id}", data: {'bs-toggle'=> 'modal', 'bs-target' => '#recipe-data', url: "/recipes/#{recipe.id}.json"} , remote: true %>
           <%= link_to 'Add to your Menu', recipe, class: "btn btn-sm btn-info" %>
         </div>
       </div>
@@ -22,16 +22,18 @@
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="recipeModal"></h4>
+        <h4 class="modal-title" id="recipe-modal-title"></h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p id="recipeDescription"><strong>Description:</strong></p>
+        <p id="recipeDescription"></p>
         <h6>Ingredients</h6>
         <ul id='ingredientList'></ul>
+        <h6>Preparation</h6>
+        <p id="preparationSteps"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="close-modal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

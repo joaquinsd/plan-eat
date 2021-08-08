@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-brand">
       <%= link_to image_tag('Sarten CQ 3.png', style: 'width:50px; height:50px', class: 'd-inline-block align-text-top') , root_path  %> 
-      PlanEat
+      <%= link_to 'PlanEat', root_path, style: 'text-decoration: none' %>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
       <ul class="navbar-nav nav-ra">
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to current_user, edit_user_registration_path, class:'nav-link' %>
+          <%= link_to 'Your Profile', your_profile_path, class:'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'nav-link' %>
