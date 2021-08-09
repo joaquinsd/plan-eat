@@ -1,0 +1,8 @@
+document.addEventListener('DOMContentLoaded',function() {
+  var editProfileButton = document.querySelector('#profile-edit')
+
+  editProfileButton.addEventListener('click', function(event){
+    console.log('hola!')
+    editProfileButton.innerHTML = ("<%= j (render 'users/registrations/form' user: current_user %>")
+  })
+})

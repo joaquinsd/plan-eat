@@ -41,6 +41,8 @@ gem 'devise'
 gem 'faker'
 #Include ActiveAdmin to generate admin roles
 gem 'activeadmin'
+# Include CanCan to manage roles using Active Admin
+gem 'cancan'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
