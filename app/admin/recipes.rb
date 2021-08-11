@@ -13,7 +13,7 @@ ActiveAdmin.register Recipe do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :description, :steps, :picture
+  permit_params :name, :description, :steps, :picture
   #
   # or
   #

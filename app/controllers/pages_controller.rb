@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!, only: %i[profile]
   def index
     respond_to do |format|
       if user_signed_in?
