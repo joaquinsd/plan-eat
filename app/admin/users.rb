@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu parent: 'Admins & Users'
 
 # includes :recipes, :ingredients, :products
-permit_params :email, :name, :lastname, :profile_picture
+permit_params :email, :name, :lastname, :profile_picture, :role
 
 index do
   column :id
@@ -10,6 +10,7 @@ index do
   column :lastname
   column :email
   column :profile_picture
+  column :role
   column :created_at
   actions
 end

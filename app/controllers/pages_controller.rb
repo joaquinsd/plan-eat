@@ -16,5 +16,13 @@ class PagesController < ApplicationController
 
   # GET /resource/profile
   def profile
+    respond_to do |format|
+      format.js {  }
+      format.html {}
+    end
+  end
+
+  def favorites
+    @favorites = Favorite.where(user_id: current_user.id).includes(:recipe)
   end
 end

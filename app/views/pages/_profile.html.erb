@@ -1,15 +1,15 @@
-<h4 id="profile-title"><%= current_user.name %>'s Profile</h4>
+<h4><%= current_user.name %>'s Profile</h4>
 
 <h5>Personal Info</h5>
 <p><strong>Email:</strong> <%= current_user.email %></p>
-<p id="profile-name"><strong>Name:</strong> <%= current_user.name %> <%= current_user.lastname %> </p>
+<p><strong>Name:</strong> <%= current_user.name %> <%= current_user.lastname %> </p>
 <%= link_to 'Edit Your Profile', edit_user_registration_path, class: "btn btn-sm btn-secondary", id: "profile-edit", remote: true, data: {'bs-toggle'=> 'modal', 'bs-target' => '#profile-data'}%>  <!-- Implementar con AJAX sin UJS (Modal) -->
 <!-- Edit Profile Modal -->
 <div class="modal fade" id="profile-data" tabindex="-1" aria-labelledby="editProfileModal">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="profile-modal-title">Edit Your Profile</h4>
+        <h4 class="modal-title" id="recipe-modal-title">Edit Your Profile</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="dynamic-form">

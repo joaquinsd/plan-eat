@@ -43,10 +43,13 @@ gem 'faker'
 gem 'activeadmin'
 # Include CanCan to manage roles using Active Admin
 gem 'cancan'
+# Use Font Awesome Icons for the app
+gem 'font_awesome5_rails'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
+gem 'devise_token_auth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

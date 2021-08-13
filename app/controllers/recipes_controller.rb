@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy]
+  before_action :set_recipe, only: %i[ show edit update destroy favorite]
 
   # GET /recipes or /recipes.json
   def index
@@ -61,6 +61,18 @@ class RecipesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def favorite
+    @recipe.fav_toggler(current_user)
+    respond_to do |format|
+      if @recipe.favorited?(current_user)
+        format.html { redirect_to root_path, notice: 'Recipe Liked' }
+      else
+        format.html { redirect_to root_path, notice: 'Recipe Unliked' }
+        format.js { redirect_to your_favorites_path}
+      end
     end
   end
 

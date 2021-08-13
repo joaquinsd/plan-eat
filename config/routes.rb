@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :recipes
+  post 'recipes/:id/favorite', to: 'recipes#favorite', as: 'recipe_like'
   get 'pages/index'
   get "/your-profile", to: "pages#profile"
+  get '/your-favorites', to: 'pages#favorites'
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations',

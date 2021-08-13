@@ -1,16 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <div class="row">
+  <div class="row row-cols-xl-4 row-cols-md-2">
     <% @recipes.each do |recipe| %>
-    <div class="col">
-      <div class="card text-end" style="width: 18rem;">
-        <img src= <%= recipe.picture%> class="card-img-top" alt="<%= recipe.name%>">
+    <div class="col mb-3">
+      <div class="card text-end h-100">
+        <div>
+          <div class="img-gradient">
+            <img src= <%= recipe.picture%> class="card-img-top" alt="<%= recipe.name%>">
+          </div>
+          <div class="card-overlay">
+            <%= link_to recipe_like_path(recipe), method: :post, class:'px-1', remote: true do %>
+            <% if recipe.favorited?(current_user) %>
+              <%= fa_icon('heart', type: :solid, class: 'red-icon fa-2x') %>
+            <% else %>
+              <%= fa_icon('heart', type: :solid, class: 'white-icon fa-2x') %> 
+            <% end %>
+          <% end %>
+          </div>
+        </div>
         <div class="card-body">
           <h5 class="card-title"><%= recipe.name %></h5>
           <p class="card-text text"><%= recipe.description %></p>
+        </div>
+        <div class="card-footer">
           <%= link_to 'See More', recipe , class: "btn btn-sm btn-primary", id:"more-recipe-info-#{recipe.id}", data: {'bs-toggle'=> 'modal', 'bs-target' => '#recipe-data', url: "/recipes/#{recipe.id}.json"} , remote: true %>
-          <%= link_to 'Add to your Menu', recipe, class: "btn btn-sm btn-info" %>
+          <%= link_to 'Add to Menu', recipe_like_path(recipe), method: :post, class: "btn btn-sm btn-info" %>
         </div>
       </div>
     </div>
