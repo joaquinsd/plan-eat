@@ -7,6 +7,8 @@ class Recipe < ApplicationRecord
 
   has_many :recipe_menus, dependent: :destroy
   has_many :menus, through: :recipe_menus, dependent: :destroy
+  accepts_nested_attributes_for :products, :allow_destroy => true
+  accepts_nested_attributes_for :ingredients, :allow_destroy => true
 
   def json_ingredients
     all_ingredients = []
