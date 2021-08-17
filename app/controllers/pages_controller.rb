@@ -3,7 +3,8 @@ class PagesController < ApplicationController
   def index
     respond_to do |format|
       if user_signed_in?
-        @recipes = Recipe.all
+        @q = Recipe.ransack(params[:q])
+        @recipes = @q.result
         format.html { render 'recipes/index' }
       else
         format.html { render :landing }

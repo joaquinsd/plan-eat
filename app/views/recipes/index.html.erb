@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+  <div class="">
+    <%= search_form_for @q,  class: "form-inline search-bar" do |f| %>
+      <%= f.search_field :name_or_description_or_steps_cont, class: "form-control ms-auto" %>
+      <%= f.submit class: "btn btn-secondary btn-sm ms-1", remote: true%>    
+    <% end %>
+  </div>
 
 <div class="container">
   <div class="row row-cols-xl-4 row-cols-md-2">
@@ -21,7 +27,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= recipe.name %></h5>
-          <p class="card-text text"><%= recipe.description %></p>
+          <p class="card-text text"><%= truncate(recipe.description, length: 100) %></p>
         </div>
         <div class="card-footer">
           <%= link_to 'See More', recipe , class: "btn btn-sm btn-primary", id:"more-recipe-info-#{recipe.id}", data: {'bs-toggle'=> 'modal', 'bs-target' => '#recipe-data', url: "/recipes/#{recipe.id}.json"} , remote: true %>

@@ -1,3 +1,7 @@
+<% if current_user.profile_picture.nil? %>
+<% else %>
+  <%= image_tag(current_user.profile_picture, class: 'user-picture') %>
+<% end %>
 <h4 id="profile-title"><%= current_user.name %>'s Profile</h4>
 
 <h5>Personal Info</h5>

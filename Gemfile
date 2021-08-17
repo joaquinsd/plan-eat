@@ -45,11 +45,14 @@ gem 'activeadmin'
 gem 'cancan'
 # Use Font Awesome Icons for the app
 gem 'font_awesome5_rails'
-
+# Use Omniauth for User authentication using facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
+# Use Devise Token Auth for API
 gem 'devise_token_auth'
+# Use Ransack for Recipe Search
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

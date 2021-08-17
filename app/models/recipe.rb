@@ -42,7 +42,7 @@ class Recipe < ApplicationRecord
   end
 
   def favorited?(user)
-    favorites.where(user: user).any?
+    favorites.where(user: user).includes(:recipes).any?
   end
 
   def fav_toggler(user)

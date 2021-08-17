@@ -9,7 +9,7 @@ Recipe.destroy_all
 Product.destroy_all
 Ingredient.destroy_all
 
-70.times do
+150.times do
   random = rand(1..3)
   name = case random
          when 1 then Faker::Food.unique.ingredient
@@ -18,10 +18,10 @@ Ingredient.destroy_all
          end
   Product.create(
     name: name
-  )
+  ) unless Product.select(:name).map(&:name).include?(name)
 end
 
-40.times do
+50.times do
   number = rand(1..10)
   Recipe.create(
     name: Faker::Food.unique.dish,
@@ -46,5 +46,6 @@ Recipe.all.each do |r|
     )
   end
 end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role: 'admin') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: '123456', password_confirmation: '123456', role: 'admin') if Rails.env.development?
 AdminUser.create!(email: 'nutricionist@example.com', password: '123456', password_confirmation: '123456') if Rails.env.development?
+User.create!(name: 'Joaquin', lastname: 'Sepulveda', email: 'test@example.com', password: '123456', password_confirmation: '123456', profile_picture: "https://desafiosdev.s3.amazonaws.com/uploads/user2/photo/7746/IMG_3254_Facetune_06-03-2020-10-42-30.jpg", role: 'admin' ) if Rails.env.development?

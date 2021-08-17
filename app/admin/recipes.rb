@@ -13,9 +13,9 @@ ActiveAdmin.register Recipe do
       f.has_many :ingredients, heading: 'Ingredients',
                             allow_destroy: true,
                             new_record: true do |a|
-        a.input :product_id, as: :select, collection: Product.all.map { |w| [w.name, w.id.to_i] }, :wrapper_html => { :class => 'fl' }
+        a.input :product_id, as: :select, collection: Product.all.map { |w| [w.name, w.id.to_i] }.uniq.sort, :wrapper_html => { :class => 'fl' }
         a.input :amount, :wrapper_html => { :class => 'fl' }
-        a.input :measure, as: :select, collection: Ingredient.select(:measure).map(&:measure).uniq, :wrapper_html => { :class => 'fl' }
+        a.input :measure, as: :select, collection: Ingredient.select(:measure).map(&:measure).uniq.sort, :wrapper_html => { :class => 'fl' }
       end
       f.input :steps
       f.input :picture

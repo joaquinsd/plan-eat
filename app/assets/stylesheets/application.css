@@ -80,3 +80,19 @@
   border: 3px solid #73AD21;
   padding: 10px;
 }
+
+.user-picture {
+  height: 10rem;
+  width: 10rem;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  white-space: normal;
+  margin-bottom: 1em;
+}
+
+.search-bar {
+  float: right;
+  display: inline-flex;
+}
