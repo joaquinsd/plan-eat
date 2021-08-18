@@ -35,6 +35,8 @@ end
   @categories.shuffle!
   categ_id = @categories.sample.id
   random = rand(1..3)
+  price = rand(99..259) * 10
+  stock = rand(0..500)
   name = case random
          when 1 then Faker::Food.unique.ingredient
          when 2 then Faker::Food.unique.fruits
@@ -42,7 +44,9 @@ end
          end
   Product.create(
     name: name,
-    category_id: categ_id
+    category_id: categ_id,
+    price: price,
+    stock: stock
   ) unless Product.select(:name).map(&:name).include?(name)
 end
 

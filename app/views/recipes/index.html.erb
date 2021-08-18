@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
-  <div class="">
-    <%= search_form_for @q,  class: "form-inline search-bar" do |f| %>
-      <%= f.search_field :name_or_description_or_steps_cont, class: "form-control ms-auto" %>
-      <%= f.submit class: "btn btn-secondary btn-sm ms-1", remote: true%>    
-    <% end %>
-  </div>
+<div>
+  <%= search_form_for @q,  class: "form-inline search-bar" do |f| %>
+    <%= f.search_field :name_or_description_or_steps_cont, class: "form-control ms-auto", placeholder: 'Search Here' %>
+    <%= f.submit class: "btn btn-outline-secondary btn-sm ms-1", remote: true%>    
+  <% end %>
+</div>
+<br>
 
 <div class="container">
   <div class="row row-cols-xl-4 row-cols-md-2">
@@ -31,6 +32,7 @@
         </div>
         <div class="card-footer">
           <%= link_to 'See More', recipe , class: "btn btn-sm color-btn", id:"more-recipe-info-#{recipe.id}", data: {'bs-toggle'=> 'modal', 'bs-target' => '#recipe-data', url: "/recipes/#{recipe.id}.json"} , remote: true %>
+          <%= link_to 'Add to Cart', recipe_add_cart_path(recipe), class: "btn btn-sm color-btn", method: :post %>
         </div>
       </div>
     </div>

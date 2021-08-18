@@ -21,10 +21,11 @@
           <h5 class="card-title"><%= link_to favorite.recipe.name, "/recipes/#{favorite.recipe.id}" %><%=  %></h5>
           <p class="card-text text"><%= favorite.recipe.description %></p>
         </div>
+        <div class="card-footer">
+          <%= link_to 'Add to Cart', recipe_add_cart_path(favorite.recipe), class: "btn btn-sm color-btn", method: :post %>
+        </div>
       </div>
     </div>
   <% end %>
 
-</div>
-</div>
 </div>

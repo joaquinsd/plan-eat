@@ -10,17 +10,31 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav nav-ra ms-auto">
         <% if user_signed_in? %>
+        <li>
+          <%= link_to fa_icon('shopping-cart', type: :solid), cart_path, class:'nav-link' %>
+        </li>
         <li class="nav-item">
           <%= link_to 'Your Profile', your_profile_path, class:'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Your Favorites', your_favorites_path, class:'nav-link' %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            More
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <%= link_to 'Your Favorites', your_favorites_path, class:'dropdown-item' %>
+            </li>
+            <li>
+              <%= link_to 'Your Orders', your_orders_path, class:'dropdown-item' %>
+            </li>
+            <% if current_user.role != 'read' %>
+            <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to 'Admin Panel', admin_root_path, class:'dropdown-item' %>
+              </li>  
+            <% end %>
+          </ul>
         </li>
-        <% if current_user.role != 'read' %>
-          <li class="nav-item">
-            <%= link_to 'Admin Panel', admin_root_path, class:'nav-link' %>
-          </li>  
-        <% end %>
         <li class="nav-item">
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'nav-link' %>
         </li>

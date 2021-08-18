@@ -26,4 +26,10 @@ class PagesController < ApplicationController
   def favorites
     @favorites = Favorite.where(user_id: current_user.id).includes(:recipe)
   end
+
+  def orders
+    @orders_pending = Order.where("user_id = ? and status = ?",current_user.id, 'created').includes(:order_items)
+    @orders_completed = Order.where("user_id = ? and status != ?",current_user.id, 'created').includes(:order_items)
+
+  end
 end

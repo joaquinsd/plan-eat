@@ -1,13 +1,16 @@
-<% if current_user.profile_picture.nil? %>
-<% else %>
-  <%= image_tag(current_user.profile_picture, class: 'user-picture') %>
-<% end %>
-<h4 id="profile-title"><%= current_user.name %>'s Profile</h4>
-
-<h5>Personal Info</h5>
-<p><strong>Email:</strong> <%= current_user.email %></p>
-<p id="profile-name"><strong>Name:</strong> <%= current_user.name %> <%= current_user.lastname %> </p>
-<%= link_to 'Edit Your Profile', edit_user_registration_path, class: "btn btn-sm btn-secondary", id: "profile-edit", remote: true, data: {'bs-toggle'=> 'modal', 'bs-target' => '#profile-data'}%>  <!-- Implementar con AJAX sin UJS (Modal) -->
+<div class="profile-style">
+  <% if current_user.profile_picture.nil? %>
+  <% else %>
+    <%= image_tag(current_user.profile_picture, class: 'user-picture') %>
+  <% end %>
+  <div class="ms-5">
+    <h4 id="profile-title"><%= current_user.name %>'s Profile</h4>
+    <h5>Personal Info</h5>
+    <p><strong>Email:</strong> <%= current_user.email %></p>
+    <p id="profile-name"><strong>Name:</strong> <%= current_user.name %> <%= current_user.lastname %> </p>
+    <%= link_to 'Edit Your Profile', edit_user_registration_path, class: "btn btn-sm btn-secondary", id: "profile-edit", remote: true, data: {'bs-toggle'=> 'modal', 'bs-target' => '#profile-data'}%>
+  </div>
+</div>
 <!-- Edit Profile Modal -->
 <div class="modal fade" id="profile-data" tabindex="-1" aria-labelledby="editProfileModal">
   <div class="modal-dialog modal-dialog-scrollable">

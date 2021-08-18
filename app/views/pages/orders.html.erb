@@ -1,0 +1,43 @@
+<h4><%= current_user.name %>'s Orders</h4>
+<h5>Pending Payment</h5>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order Nº</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @orders_pending.each do |order| %>
+        <tr>
+          <td><%= order.number %></td>
+          <td><%= number_to_currency order.total %></td>
+          <td><%= order.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h5>Completed</h5>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order Nº</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @orders_completed.each do |order| %>
+        <tr>
+          <td><%= order.number %></td>
+          <td><%= number_to_currency order.total %></td>
+          <td><%= order.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
