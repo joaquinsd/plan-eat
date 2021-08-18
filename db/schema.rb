@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_021709) do
+ActiveRecord::Schema.define(version: 2021_08_18_021631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,23 @@ ActiveRecord::Schema.define(version: 2021_08_17_021709) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "average_caches", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "recipe_id"
@@ -70,10 +87,56 @@ ActiveRecord::Schema.define(version: 2021_08_17_021709) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.bigint "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "rating"
+    t.bigint "user_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_ratings_on_recipe_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "recipe_menus", force: :cascade do |t|
@@ -125,6 +188,9 @@ ActiveRecord::Schema.define(version: 2021_08_17_021709) do
   add_foreign_key "favorites", "users"
   add_foreign_key "ingredients", "products"
   add_foreign_key "ingredients", "recipes"
+  add_foreign_key "products", "categories"
+  add_foreign_key "ratings", "recipes"
+  add_foreign_key "ratings", "users"
   add_foreign_key "recipe_menus", "menus"
   add_foreign_key "recipe_menus", "recipes"
   add_foreign_key "user_menus", "menus"

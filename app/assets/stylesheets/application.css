@@ -96,3 +96,36 @@
   float: right;
   display: inline-flex;
 }
+
+.color-btn {
+  background: #ff9139;
+  color: white;
+}
+.color-btn:hover, .color-btn:focus, .color-btn:active, .color-btn.active, .open .dropdown-toggle.color-btn { 
+  background-color: #e37923;
+  color:#FFF;   
+}
+
+.color-text{
+  color: #ff9139;
+  font-weight: bold;
+}
+
+#rating_bar {
+  margin: 4px 4px 4px 10px!important;
+  display:inline-block;
+  display:inline;
+}
+#rating_bar > span:before {
+  content:'★';
+  color: #c7c5c5;
+  cursor:pointer;
+  font-size:2em;
+}
+#rating_bar:hover > span:before {
+  color: gold;
+}
+
+#rating_bar > span:hover ~ span:before {
+  color: #c7c5c5;
+}

@@ -77,6 +77,18 @@ class RecipesController < ApplicationController
     end
   end
 
+  def add_to_menu
+    @menu = Menu.find(params[:id])
+    @recipe.menu_toggler(@menu)
+    respond_to do |format| 
+      if @recipe.included_menu?(@menu)
+        format.html { redirect_to root_path, notice: 'Recipe Added to Menu'}
+      else
+        format.html { redirect_to root_path, notice: 'Recipe Removed from Menu'}
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe

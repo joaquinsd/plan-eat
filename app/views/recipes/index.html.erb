@@ -30,8 +30,7 @@
           <p class="card-text text"><%= truncate(recipe.description, length: 100) %></p>
         </div>
         <div class="card-footer">
-          <%= link_to 'See More', recipe , class: "btn btn-sm btn-primary", id:"more-recipe-info-#{recipe.id}", data: {'bs-toggle'=> 'modal', 'bs-target' => '#recipe-data', url: "/recipes/#{recipe.id}.json"} , remote: true %>
-          <%= link_to 'Add to Menu', recipe_like_path(recipe), method: :post, class: "btn btn-sm btn-info" %>
+          <%= link_to 'See More', recipe , class: "btn btn-sm color-btn", id:"more-recipe-info-#{recipe.id}", data: {'bs-toggle'=> 'modal', 'bs-target' => '#recipe-data', url: "/recipes/#{recipe.id}.json"} , remote: true %>
         </div>
       </div>
     </div>

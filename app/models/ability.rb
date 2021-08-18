@@ -9,7 +9,7 @@ class Ability
     else
       can :manage, Recipe
       can :manage, Product
-      can :manage, Ingredient
+      can :manage, Menu
       can :read, :all
     end
   end

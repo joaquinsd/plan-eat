@@ -8,6 +8,7 @@ ActiveAdmin.register Recipe do
 
   form do |f|
     f.inputs do
+      f.semantic_errors *f.object.errors.keys
       f.input :name
       f.input :description
       f.has_many :ingredients, heading: 'Ingredients',
@@ -34,20 +35,5 @@ ActiveAdmin.register Recipe do
     active_admin_comments
   end
 
-  
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
   permit_params :name, :description, :steps, :picture, ingredients_attributes: [:id, :amount, :measure, :product_id, :_destroy], products_attributes: [:name]
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:name, :description, :steps, :picture]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
 end

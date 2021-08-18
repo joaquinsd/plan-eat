@@ -8,8 +8,27 @@
 Recipe.destroy_all
 Product.destroy_all
 Ingredient.destroy_all
+Category.destroy_all
+categories = ['Fruits', 'Vegetables', 'Meat & Fish', 'Dairy', 'Spices', 'Frozen', 'Pantry', 'Other']
+menus = ['Traditional', 'Vegetarian', 'Easy', 'Light', 'Budget Friendly', 'Kids Friendly']
 
-150.times do
+categories.each do |cat|
+  Category.create(name: cat)
+end
+
+menus.each do |menu|
+  number = rand(2..6)
+  Menu.create(
+    title: menu,
+    members: number,
+    category: menu
+  )
+end
+
+@categories = Category.all.to_a
+160.times do
+  @categories.shuffle!
+  categ_id = @categories.sample.id
   random = rand(1..3)
   name = case random
          when 1 then Faker::Food.unique.ingredient
@@ -17,7 +36,8 @@ Ingredient.destroy_all
          when 3 then Faker::Food.unique.vegetables
          end
   Product.create(
-    name: name
+    name: name,
+    category_id: categ_id
   ) unless Product.select(:name).map(&:name).include?(name)
 end
 
@@ -29,6 +49,19 @@ end
     steps: Faker::Lorem.paragraph(sentence_count: 10),
     picture: Faker::LoremPixel.image(category: 'food', number: number)
   )
+end
+
+Menu.all.each do |m|
+  @recipes = Recipe.all.to_a
+  @recipes.shuffle!
+  ingred_qty = rand(4..10)
+  ingred_qty.times do
+    recip_id = @recipes.pop.id
+    RecipeMenu.create(
+      menu_id: m.id,
+      recipe_id: recip_id
+    )
+  end
 end
 
 Recipe.all.each do |r|

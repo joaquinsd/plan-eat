@@ -3,6 +3,7 @@
 <h4>
   <%= @recipe.name %>
 </h4>
+Speed : <%= rating_for @recipe, 'name', star: 10, disable_after_rate: true %>
 
 <p>
   <strong>Description:</strong>

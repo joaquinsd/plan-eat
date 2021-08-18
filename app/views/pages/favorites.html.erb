@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="card-body">
-          <h5 class="card-title"><%= favorite.recipe.name %></h5>
+          <h5 class="card-title"><%= link_to favorite.recipe.name, "/recipes/#{favorite.recipe.id}" %><%=  %></h5>
           <p class="card-text text"><%= favorite.recipe.description %></p>
         </div>
       </div>

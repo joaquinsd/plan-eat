@@ -7,8 +7,11 @@ class Recipe < ApplicationRecord
 
   has_many :recipe_menus, dependent: :destroy
   has_many :menus, through: :recipe_menus, dependent: :destroy
-  accepts_nested_attributes_for :products, :allow_destroy => true
-  accepts_nested_attributes_for :ingredients, :allow_destroy => true
+  accepts_nested_attributes_for :products, allow_destroy: true
+  accepts_nested_attributes_for :ingredients, allow_destroy: true
+  ratyrate_rateable 'name'
+
+  validates_presence_of :name, :description, :steps, :picture, :ingredients
 
   def json_ingredients
     all_ingredients = []
@@ -52,4 +55,29 @@ class Recipe < ApplicationRecord
       favorite(user)
     end
   end
+
+  def add_to_menu(menu)
+    RecipeMenu.create(recipe: self, menu: menu)
+  end
+
+  def delete_from_menu(menu)
+    recipe_menus.where(menu: menu).destroy_all
+  end
+
+  def included_menu?(menu)
+    recipe_menus.where(menu: menu).any?
+  end
+
+  def menu_toggler(menu)
+    if included_menu?(menu)
+      delete_from_menu(menu)
+    else
+      add_to_menu(menu)
+    end
+  end
+
+  def rate(value, user)
+    Rating.create(recipe: self, user: user, rating: value)
+  end
+
 end

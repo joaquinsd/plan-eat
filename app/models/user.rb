@@ -7,8 +7,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :recipes, through: :favorites, dependent: :destroy
 
+
   has_many :user_menus, dependent: :destroy
   has_many :menus, through: :user_menus, dependent: :destroy
+
+  ratyrate_rater
 
   def to_s
     name
