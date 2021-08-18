@@ -5,6 +5,7 @@ ActiveAdmin.register Recipe do
   filter :products, as: :select, label: 'Ingredients'
   filter :name, filters: [:contains, :equals, :starts_with, :ends_with]  
   filter :description, filters: [:contains, :equals, :starts_with, :ends_with]  
+  filter :category, as: :select, label: 'Categories'
 
   form do |f|
     f.inputs do
@@ -20,6 +21,7 @@ ActiveAdmin.register Recipe do
       end
       f.input :steps
       f.input :picture
+      f.input :category, as: :select, collection: Recipe.select(:category).map(&:category).uniq.sort
     end
     f.actions
   end
@@ -35,5 +37,5 @@ ActiveAdmin.register Recipe do
     active_admin_comments
   end
 
-  permit_params :name, :description, :steps, :picture, ingredients_attributes: [:id, :amount, :measure, :product_id, :_destroy], products_attributes: [:name]
+  permit_params :name, :description, :steps, :picture, :category, ingredients_attributes: [:id, :amount, :measure, :product_id,:_destroy], products_attributes: [:name]
 end

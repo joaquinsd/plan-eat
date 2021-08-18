@@ -9,8 +9,13 @@ Recipe.destroy_all
 Product.destroy_all
 Ingredient.destroy_all
 Category.destroy_all
+Menu.destroy_all
+User.destroy_all
+AdminUser.destroy_all
+
 categories = ['Fruits', 'Vegetables', 'Meat & Fish', 'Dairy', 'Spices', 'Frozen', 'Pantry', 'Other']
 menus = ['Traditional', 'Vegetarian', 'Easy', 'Light', 'Budget Friendly', 'Kids Friendly']
+@recipe_categories = ['Light', ' Vegetarian', 'Vegan', 'Keto', 'Main Dish', 'Dessert', 'Salad', 'Soup']
 
 categories.each do |cat|
   Category.create(name: cat)
@@ -43,11 +48,13 @@ end
 
 50.times do
   number = rand(1..10)
+  categ = @recipe_categories.sample
   Recipe.create(
     name: Faker::Food.unique.dish,
     description: Faker::Food.description,
     steps: Faker::Lorem.paragraph(sentence_count: 10),
-    picture: Faker::LoremPixel.image(category: 'food', number: number)
+    picture: Faker::LoremPixel.image(category: 'food', number: number),
+    category: categ
   )
 end
 

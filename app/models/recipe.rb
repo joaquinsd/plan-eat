@@ -11,7 +11,7 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, allow_destroy: true
   ratyrate_rateable 'name'
 
-  validates_presence_of :name, :description, :steps, :picture, :ingredients
+  validates_presence_of :name, :description, :steps, :picture, :category
 
   def json_ingredients
     all_ingredients = []
