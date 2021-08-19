@@ -17,6 +17,10 @@ class PagesController < ApplicationController
 
   # GET /resource/profile
   def profile
+    @recipe_favorites = Favorite.where(user_id: current_user.id).joins(:recipe)
+    @ingredient_favorites = Favorite.where(user_id: current_user.id).joins(recipe: {ingredients: {product: :category}})
+    @categories_chart = @recipe_favorites.group('recipes.category').count
+    @ingredients_chart = @ingredient_favorites.group('categories.name').count
     respond_to do |format|
       format.js {  }
       format.html {}

@@ -1,5 +1,8 @@
 {
   "name": "PlanEat",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chartkick": "^4.0.5",
+    "highcharts": "^9.2.0"
+  }
 }

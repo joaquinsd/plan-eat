@@ -11,6 +11,19 @@
     <%= link_to 'Edit Your Profile', edit_user_registration_path, class: "btn btn-sm btn-secondary", id: "profile-edit", remote: true, data: {'bs-toggle'=> 'modal', 'bs-target' => '#profile-data'}%>
   </div>
 </div>
+
+<div class="row justify-content-center mt-3">
+  <h4 class="text-center mb-3">Your Favorites Data </h4>
+  <div class="col-4">
+    <%= pie_chart @categories_chart %>
+    <p class="text-center">Distributed by Category</p>
+  </div>
+  <div class="col-4">
+    <%= pie_chart @ingredients_chart %>
+    <p class="text-center"> Distribution by Ingredient Category</p>
+  </div>
+  <h6 class="text-center">Your choices are nutricionally <strong>balanced!</strong></h6>
+</div>
 <!-- Edit Profile Modal -->
 <div class="modal fade" id="profile-data" tabindex="-1" aria-labelledby="editProfileModal">
   <div class="modal-dialog modal-dialog-scrollable">
