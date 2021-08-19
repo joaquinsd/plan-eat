@@ -32,8 +32,8 @@ class PagesController < ApplicationController
   end
 
   def orders
-    @orders_pending = Order.where("user_id = ? and status = ?",current_user.id, 'created').includes(:order_items)
-    @orders_completed = Order.where("user_id = ? and status != ?",current_user.id, 'created').includes(:order_items)
+    @orders_pending = Order.where("user_id = ? and status != ?",current_user.id, 'completed').includes(:order_items)
+    @orders_completed = Order.where("user_id = ? and status = ?",current_user.id, 'completed').includes(:order_items)
 
   end
 end

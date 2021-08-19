@@ -24,4 +24,13 @@
       </tbody>
     </table>
   </div>
+  <div class="card-footer">
+    <div class="pull-right" style="margin: 5px">
+      Total: $<b><%= @order.total %></b>
+      <%= form_for :cart, url: pay_with_paypal_cart_path, method: :post do |f| %>
+        <%= f.hidden_field :order_id, value: @order.id %>
+        <%= f.submit 'Pay', class: 'btn btn-success pull-right' %>
+      <% end %>
+    </div>
+  </div>
 </div>

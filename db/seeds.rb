@@ -12,6 +12,7 @@ Category.destroy_all
 Menu.destroy_all
 User.destroy_all
 AdminUser.destroy_all
+PaymentMethod.destroy_all
 
 categories = ['Fruits', 'Vegetables', 'Meat & Fish', 'Dairy', 'Spices', 'Frozen', 'Pantry', 'Other']
 menus = ['Traditional', 'Vegetarian', 'Easy', 'Light', 'Budget Friendly', 'Kids Friendly']
@@ -90,6 +91,8 @@ Recipe.all.each do |r|
     )
   end
 end
+
+PaymentMethod.create(name: 'Paypal Express Checkout', code:'PEC')
 AdminUser.create!(email: 'admin@example.com', password: '123456', password_confirmation: '123456', role: 'admin') if Rails.env.development?
 AdminUser.create!(email: 'nutricionist@example.com', password: '123456', password_confirmation: '123456') if Rails.env.development?
 User.create!(name: 'Joaquin', lastname: 'Sepulveda', email: 'test@example.com', password: '123456', password_confirmation: '123456', profile_picture: "https://desafiosdev.s3.amazonaws.com/uploads/user2/photo/7746/IMG_3254_Facetune_06-03-2020-10-42-30.jpg", role: 'admin' ) if Rails.env.development?

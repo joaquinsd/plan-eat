@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :recipes
-  resource :cart, only: %i[show update]
+  resource :cart, only: %i[show update] do
+    member do
+      post :pay_with_paypal
+      get :process_paypal_payment
+    end
+  end
   post 'recipes/:id/favorite', to: 'recipes#favorite', as: 'recipe_like'
   post 'recipes/:id/add_to_cart', to: 'recipes#add_to_cart', as: 'recipe_add_cart'
   post 'recipes/:id/rate', to: 'recipes#rate', as: 'recipe_rate'
