@@ -43,7 +43,7 @@ class CartsController < ApplicationController
   end
 
   def order_total
-    @details.params['order_total'].to_d * 100
+    @details.params['order_total'].to_d / 750 * 100
   end
 
   def express_purchase_options

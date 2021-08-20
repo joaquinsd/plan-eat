@@ -43,7 +43,11 @@ class Order < ApplicationRecord
   end
 
   def total_in_cents
-    total*100
+    if total.nil?
+      0
+    else
+    total / 750 * 100
+    end
   end
 
   def set_status_completed
