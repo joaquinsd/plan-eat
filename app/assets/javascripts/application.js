@@ -13,10 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery.raty
-//= require ratyrate
 //= require jquery
 //= require jquery_ujs
+//= require jquery.raty
+//= require ratyrate
 //= require highcharts
 //= require chartkick
 //= require_tree .
