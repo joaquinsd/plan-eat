@@ -30,3 +30,8 @@ highcharts@^9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-9.2.0.tgz#be3c2fb995fdbb1c1b841b6069b2f68f20bcfa64"
   integrity sha512-ci5K1bS6epjjCm1eJXn08NULMlvaMU/FLGtOGHFXVAHP/mDf13J0wGzVd9e4Af+8V3fYnYDf0HKAVk3ytgQETw==
+
+jquery@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
