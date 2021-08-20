@@ -57,6 +57,7 @@ gem 'ransack'
 gem 'ratyrate'
 # Use Chartkick to generate fun graphs
 gem 'chartkick'
+gem 'highcharts'
 # Use Active Merchant for payment methods integration
 gem 'activemerchant'
 # Use Figaro to add ENV Variables

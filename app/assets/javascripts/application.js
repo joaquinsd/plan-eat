@@ -17,5 +17,4 @@
 //= require ratyrate
 //= require highcharts
 //= require chartkick
-//= require chartkick
 //= require_tree .
