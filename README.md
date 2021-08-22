@@ -8,7 +8,7 @@ The best of all is that you can do it all in a single place!
 
 PlanEat is a super basic clone of [ComoQuiero](https://www.comoquiero.net), and is being developed as my final project of the Bootcamp 'Fullstack Developer - Ruby on Rails'. 
 The Kanban Board with the User Stroies can be found [here](https://bit.ly/3fA4nQ1).
-The deployed version of this App can be found at [Planeat.cl](https://www.planeat.cl) or at [Heroku](https://planeat-cl.herokuapp.com/)
+The deployed version of this App can be found at [Planeat.cl](https://planeat.cl), [Planeat.xyz](https://planeat.xyz) or at [Heroku](https://planeat-cl.herokuapp.com/)
 ## Used Versions
 ruby: `2.6.6` \
 rails: `5.2.6`
