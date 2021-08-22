@@ -63,6 +63,8 @@ gem 'jquery-rails'
 gem 'activemerchant'
 # Use Figaro to add ENV Variables
 gem 'figaro'
+# Use SendGrid gem to add mailer data into the app
+gem 'sendgrid-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
