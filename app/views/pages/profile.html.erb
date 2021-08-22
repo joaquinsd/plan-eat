@@ -1,5 +1,6 @@
 <div class="profile-style">
   <% if current_user.profile_picture.nil? %>
+  <%= image_tag("https://dummyimage.com/500x500/ff9139/fff&text=#{current_user.name[0]}#{current_user.lastname[0]}", class: 'user-picture') %>
   <% else %>
     <%= image_tag(current_user.profile_picture, class: 'user-picture') %>
   <% end %>
