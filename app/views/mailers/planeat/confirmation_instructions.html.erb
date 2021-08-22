@@ -1,0 +1,5 @@
+<div class="secondary-text light-gray space-below">Just need to confirm your email!</div>
+
+<div class="secondary-text light-gray">You can activate your RMTWRK subscription through the link below:</div>
+
+<div class="secondary-text space-below"><%= link_to 'Confirm my email address', @individual.devise_confirmation_url(@token) %></div>
