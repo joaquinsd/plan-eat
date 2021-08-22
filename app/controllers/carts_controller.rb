@@ -26,6 +26,7 @@ class CartsController < ApplicationController
     if response.success?
       payment = Payment.find_by(token: response.token)
       payment.complete_payment
+      UserNotifierMailer.test_mail.deliver_later
       redirect_to root_path, notice: 'Successful purchase! Thank you!'
     else
       redirect_to root_path, alert: "We're having some troubles processing your payment, please try again!"

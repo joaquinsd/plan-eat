@@ -1,15 +1,16 @@
 class UserNotifierMailer < ApplicationMailer
+  require 'sendgrid-ruby'
+  include SendGrid
   def test_mail
-    require 'sendgrid-ruby'
-    include SendGrid
+    body = '<h4>Hello,</h4><br/><p>Regards</p>'
 
-    from = 'joaquinsepulveda@hotmail.com'
+    from = Email.new(email: 'joaquinsepulveda@hotmail.com')
     to = Email.new(email: 'joaquinsepulveda@hotmail.com')
     subject = 'Sending with SendGrid is Fun'
-    content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
+    content = Content.new(type: 'text/html', value: body)
     mail = Mail.new(from, subject, to, content)
 
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_2nd_API_KEY'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)
     puts response.status_code
     puts response.body
