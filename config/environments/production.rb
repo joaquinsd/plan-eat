@@ -90,7 +90,7 @@ Rails.application.configure do
   end
 
   # Mailer
-  config.action_mailer.default_url_options = { host: 'planeat-cl.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'planeat.xyz' }
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
           api_key: ENV['MAILGUN_API_KEY'],
