@@ -29,8 +29,13 @@ submitForm.addEventListener('click', function(event){
       'current_password': current_password}
     })
   })
-    promise.then(function(response){
-      $('#profile-data').modal('hide')
-    })
+  promise.then(function(response){
+    console.log(`${name}`)
+    document.querySelector('#profile-title').innerHTML = `${name}'s Profile`
+    document.querySelector('#profile-name').innerHTML = `<strong>Name:</strong> ${name} ${lastName}`
+  })
+  promise.then(function(response){
+    $('#profile-data').modal('hide')
+  })
 })
 

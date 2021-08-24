@@ -1,18 +1,41 @@
-<h4><%= current_user.name %>'s Profile</h4>
-
-<h5>Personal Info</h5>
-<p><strong>Email:</strong> <%= current_user.email %></p>
-<p><strong>Name:</strong> <%= current_user.name %> <%= current_user.lastname %> </p>
-<%= link_to 'Edit Your Profile', edit_user_registration_path, class: "btn btn-sm btn-secondary", id: "profile-edit", remote: true, data: {'bs-toggle'=> 'modal', 'bs-target' => '#profile-data'}%>  <!-- Implementar con AJAX sin UJS (Modal) -->
-<!-- Edit Profile Modal -->
-<div class="modal fade" id="profile-data" tabindex="-1" aria-labelledby="editProfileModal">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="recipe-modal-title">Edit Your Profile</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="dynamic-form">
+<div id="my-profile">
+  <div class="profile-style">
+    <% if current_user.profile_picture.nil? %>
+    <%= image_tag("https://dummyimage.com/500x500/ff9139/fff&text=#{current_user.name[0]}#{current_user.lastname[0]}", class: 'user-picture') %>
+    <% else %>
+      <%= image_tag(current_user.profile_picture, class: 'user-picture') %>
+    <% end %>
+    <div class="ms-5">
+      <h4 id="profile-title"><%= current_user.name %>'s Profile</h4>
+      <h5>Personal Info</h5>
+      <p><strong>Email:</strong> <%= current_user.email %></p>
+      <p id="profile-name"><strong>Name:</strong> <%= current_user.name %> <%= current_user.lastname %> </p>
+      <%= link_to 'Edit Your Profile', edit_user_registration_path, class: "btn btn-sm btn-secondary", id: "profile-edit", remote: true, data: {'bs-toggle'=> 'modal', 'bs-target' => '#profile-data'}%>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center mt-3">
+    <h4 class="text-center mb-3">Your Favorites Data </h4>
+    <div class="col-4">
+      <%= pie_chart @categories_chart %>
+      <p class="text-center">Distributed by Category</p>
+    </div>
+    <div class="col-4">
+      <%= pie_chart @ingredients_chart %>
+      <p class="text-center"> Distribution by Ingredient Category</p>
+    </div>
+    <h6 class="text-center">Your choices are nutricionally <strong>balanced!</strong></h6>
+  </div>
+  <!-- Edit Profile Modal -->
+  <div class="modal fade" id="profile-data" tabindex="-1" aria-labelledby="editProfileModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="profile-modal-title">Edit Your Profile</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="dynamic-form">
+        </div>
       </div>
     </div>
   </div>
