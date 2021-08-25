@@ -1,5 +1,6 @@
 ActiveAdmin.register Order do
   includes :products, :order_items
+  menu parent: 'Orders'
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

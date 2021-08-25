@@ -5,7 +5,7 @@ class UserNotifierMailer < ApplicationMailer
     body = '<h4>Hello,</h4><br/><p>Regards</p>'
 
     from = Email.new(email: 'joaquinsepulveda@hotmail.com')
-    to = Email.new(email: 'joaquinsepulveda@hotmail.com')
+    to = Email.new(email: 'joaquinsepulvedad@gmail.com')
     subject = 'Sending with SendGrid is Fun'
     content = Content.new(type: 'text/html', value: body)
     mail = Mail.new(from, subject, to, content)
