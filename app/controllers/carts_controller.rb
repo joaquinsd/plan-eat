@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: %i[pay_with_paypal]
+  before_action :set_order, only: %i[pay_with_paypal process_paypal_payment ]
 
 
   def show
@@ -22,11 +22,11 @@ class CartsController < ApplicationController
 
   def process_paypal_payment
     @details = EXPRESS_GATEWAY.details_for(params_token)
-    response = EXPRESS_GATEWAY.purchase(order_total, express_purchase_options)
+    response = EXPRESS_GATEWAY.purchase(order_USD, express_purchase_options)
     if response.success?
       payment = Payment.find_by(token: response.token)
       payment.complete_payment
-      UserNotifierMailer.test_mail.deliver_later
+      UserNotifierMailer.purchase_confirmation_mail(current_user, @order).deliver_now
       redirect_to root_path, notice: 'Successful purchase! Thank you!'
     else
       redirect_to root_path, alert: "We're having some troubles processing your payment, please try again!"
@@ -43,7 +43,7 @@ class CartsController < ApplicationController
     params[:token]
   end
 
-  def order_total
+  def order_USD
     @details.params['order_total'].to_d / 750 * 100
   end
 
