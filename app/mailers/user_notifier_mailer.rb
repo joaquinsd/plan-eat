@@ -20,8 +20,10 @@ class UserNotifierMailer <br ApplicationMailer
   def purchase_confirmation_mail(user, order)
     from = Email.new(email: 'joaquinsepulveda@hotmail.com')
     to = Email.new(email: user.email)
-    subject = "Thanks for your purchase!"
-    body = "<h4>Hello #{user.name},</h4> </br> <p> Your Order Nº #{order.number} it's on it way </p> <br/><p>Thanks Againg from the PlanEat Team!</p>"
+    subject = 'Thanks for your purchase!'
+    body = "<h4>Hello #{user.name},</h4>
+            </br><p> Your Order Nº #{order.number} it's on it way </p>
+            <br/><p>Thanks again from the PlanEat Team!</p>"
     content = Content.new(type:'text/html', value: body)
     mail = Mail.new(from, subject, to, content)
 
