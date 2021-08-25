@@ -19,7 +19,7 @@ class Order < ApplicationRecord
   end
 
   def hash_prefix
-    "BO-"
+    "PE-"
   end
 
   def hash_size
@@ -37,7 +37,7 @@ class Order < ApplicationRecord
   def compute_total
     sum = 0
     order_items.each do |item|
-      sum += item.price
+      sum += item.price * item.quantity
     end
     update_attribute(:total, sum)
   end
