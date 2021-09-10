@@ -1,8 +1,8 @@
-class UserNotifierMailer <br ApplicationMailer
+class UserNotifierMailer < ApplicationMailer
   require 'sendgrid-ruby'
   include SendGrid
   def test_mail
-    body = '<h4>Hello,</h4><br/><p>Regards</p>'
+    body = '<h4>Hello,</h4></br><p>Regards</p>'
 
     from = Email.new(email: 'joaquinsepulveda@hotmail.com')
     to = Email.new(email: 'joaquinsepulvedad@gmail.com')
