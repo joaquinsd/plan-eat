@@ -23,7 +23,7 @@ class UserNotifierMailer <br ApplicationMailer
     subject = 'Thanks for your purchase!'
     body = "<h4>Hello #{user.name},</h4>
             </br><p> Your Order Nº #{order.number} it's on it way </p>
-            <br/><p>Thanks again from the PlanEat Team!</p>"
+            </br><p>Thanks again from the PlanEat Team!</p>"
     content = Content.new(type:'text/html', value: body)
     mail = Mail.new(from, subject, to, content)
 
