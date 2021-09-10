@@ -65,6 +65,9 @@ gem 'activemerchant'
 gem 'figaro'
 # Use SendGrid gem to add mailer data into the app
 gem 'sendgrid-ruby'
+# Use Sentry for Error Reports
+gem 'sentry-ruby'
+gem 'sentry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
